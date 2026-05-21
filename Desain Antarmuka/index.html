@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMER FUEL TOP-UP - Neobrutalism</title>
+    
+    <!-- Google Fonts: Archivo Black (Display) & Space Grotesk (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neo: {
+                            yellow: '#FAFF00',
+                            magenta: '#FF00E6',
+                            blue: '#0047FF',
+                            bg: '#F8F8F0', // Off-white
+                            black: '#0A0A0A'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Archivo Black"', 'sans-serif'],
+                        body: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px #0A0A0A',
+                        'brutal-lg': '12px 12px 0px 0px #0A0A0A',
+                        'brutal-sm': '4px 4px 0px 0px #0A0A0A',
+                        'brutal-white': '6px 6px 0px 0px #FFFFFF',
+                    },
+                    animation: {
+                        'marquee': 'marquee 15s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Neobrutalism Styles */
+        body {
+            background-color: #F8F8F0;
+            /* Textured off-white background (subtle grid) */
+            background-image: 
+                linear-gradient(rgba(10, 10, 10, 0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.05) 2px, transparent 2px),
+                linear-gradient(rgba(10, 10, 10, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            overflow-x: hidden;
+        }
+
+        /* Typography Offsets */
+        .text-offset-black {
+            text-shadow: 5px 5px 0px #0A0A0A;
+        }
+        .text-offset-magenta {
+            text-shadow: 6px 6px 0px #FF00E6, 12px 12px 0px #0A0A0A;
+        }
+        .text-offset-blue {
+            text-shadow: 4px 4px 0px #0047FF;
+        }
+
+        /* Interactive Elements */
+        .brutal-btn {
+            transition: all 0.1s ease;
+        }
+        .brutal-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px 0px #0A0A0A !important;
+        }
+        
+        .card-hover {
+            transition: all 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px 0px #0A0A0A;
+        }
+
+        /* Hide scrollbar for marquee */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body text-neo-black antialiased selection:bg-neo-magenta selection:text-white">
+
+    <!-- Marquee Banner -->
+    <div class="w-full bg-neo-yellow border-b-4 border-neo-black overflow-hidden flex py-2 border-t-4">
+        <div class="flex whitespace-nowrap animate-marquee font-display text-xl tracking-widest uppercase">
+            <span class="mx-4">⚡ INSTANT DELIVERY</span>
+            <span class="mx-4">🎮 100% SECURE TRANSACTIONS</span>
+            <span class="mx-4">🔥 24/7 CUSTOMER SUPPORT</span>
+            <span class="mx-4">⚡ LEVEL UP YOUR GAME</span>
+            <span class="mx-4">🎮 BEST PRICES GUARANTEED</span>
+            <span class="mx-4">🔥 ALL MAJOR REGIONS</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="mx-4">⚡ INSTANT DELIVERY</span>
+            <span class="mx-4">🎮 100% SECURE TRANSACTIONS</span>
+            <span class="mx-4">🔥 24/7 CUSTOMER SUPPORT</span>
+            <span class="mx-4">⚡ LEVEL UP YOUR GAME</span>
+            <span class="mx-4">🎮 BEST PRICES GUARANTEED</span>
+            <span class="mx-4">🔥 ALL MAJOR REGIONS</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-6 relative z-40">
+        <!-- Logo -->
+        <a href="#" class="group brutal-btn bg-neo-magenta text-white border-4 border-neo-black shadow-brutal px-6 py-3 block transform rotate-[-2deg]">
+            <h1 class="font-display text-3xl md:text-4xl tracking-tighter text-offset-black">GAMER FUEL</h1>
+        </a>
+
+        <!-- Links -->
+        <div class="flex flex-wrap justify-center gap-4 font-bold text-lg">
+            <a href="#" class="brutal-btn bg-white border-4 border-neo-black shadow-brutal px-6 py-2 hover:bg-neo-yellow">HOME</a>
+            <a href="#games" class="brutal-btn bg-white border-4 border-neo-black shadow-brutal px-6 py-2 hover:bg-neo-yellow">POPULAR GAMES</a>
+            <a href="#" class="brutal-btn bg-neo-blue text-white border-4 border-neo-black shadow-brutal px-6 py-2 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                MY ACCOUNT
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
+        <!-- Decorative Stickers (Absolute positioned) -->
+        
+        <!-- Lightning Sticker -->
+        <div class="absolute top-10 left-10 md:left-24 animate-float hidden md:block z-20">
+            <div class="bg-neo-yellow border-4 border-neo-black shadow-brutal px-4 py-2 transform rotate-12 flex items-center gap-1 font-display text-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#0A0A0A" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/></svg>
+                BOOST
+            </div>
+        </div>
+
+        <!-- Star Sticker 1 -->
+        <div class="absolute top-1/4 right-8 md:right-32 animate-[float_4s_ease-in-out_infinite] z-20">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="#FF00E6" stroke="#0A0A0A" stroke-width="2" class="transform -rotate-12 drop-shadow-[4px_4px_0_rgba(10,10,10,1)]">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+        </div>
+
+        <!-- Controller Sticker -->
+        <div class="absolute bottom-10 right-10 md:bottom-20 md:right-40 animate-float hidden lg:block z-20">
+            <div class="bg-neo-blue border-4 border-neo-black shadow-brutal p-3 transform -rotate-12">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect><path d="M12 12h.01"></path><path d="M16 12h.01"></path><path d="M8 12h.01"></path><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M8 16h.01"></path><path d="M8 8h.01"></path><path d="M12 8h.01"></path><path d="M16 8h.01"></path></svg>
+            </div>
+        </div>
+
+        <!-- Main Banner -->
+        <div class="relative inline-block bg-neo-yellow border-8 border-neo-black shadow-brutal-lg p-8 md:p-16 transform rotate-1 mb-8 z-30">
+            <!-- Decorative interior elements -->
+            <div class="absolute -top-4 -left-4 w-8 h-8 bg-white border-4 border-neo-black"></div>
+            <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-white border-4 border-neo-black"></div>
+            
+            <h2 class="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight text-white text-offset-magenta leading-none mb-6">
+                LEVEL UP<br>INSTANTLY!
+            </h2>
+            <p class="text-xl md:text-3xl font-bold max-w-2xl mx-auto bg-white border-4 border-neo-black px-6 py-2 shadow-brutal-sm inline-block transform -rotate-2">
+                FASTEST TOP-UPS IN THE GALAXY
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-8 z-30 relative">
+            <a href="#games" class="brutal-btn inline-block bg-neo-blue text-white font-display text-3xl px-12 py-6 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">
+                START BROWSING &darr;
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content: Product Grid -->
+    <main id="games" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <div class="flex items-center gap-4 mb-12">
+            <div class="h-2 w-full bg-neo-black flex-1"></div>
+            <h3 class="font-display text-4xl md:text-5xl bg-neo-magenta text-white px-6 py-2 border-4 border-neo-black shadow-brutal transform rotate-2">
+                HOT DEALS 🔥
+            </h3>
+            <div class="h-2 w-full bg-neo-black flex-1"></div>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            <!-- Card 1 -->
+            <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <!-- Tag -->
+                <div class="absolute -top-4 -right-4 bg-neo-yellow border-4 border-neo-black shadow-brutal-sm px-3 py-1 font-bold z-10 transform rotate-6">
+                    BEST SELLER
+                </div>
+                <!-- Icon Placeholder -->
+                <div class="w-full h-48 bg-[#2B2D42] border-4 border-neo-black mb-6 flex items-center justify-center relative overflow-hidden">
+                    <!-- Abstract geometric art for game icon -->
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="#FF00E6" stroke-width="8"/>
+                        <path d="M20 50L50 20L80 50L50 80L20 50Z" fill="#0047FF"/>
+                        <circle cx="50" cy="50" r="10" fill="#FAFF00"/>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Galactic Warriors</h4>
+                <p class="font-bold text-neo-black bg-neo-yellow border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">5000 DIAMONDS</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl">$49.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <div class="w-full h-48 bg-[#D90429] border-4 border-neo-black mb-6 flex items-center justify-center overflow-hidden">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 90L50 10L90 90H10Z" fill="#FAFF00" stroke="#0A0A0A" stroke-width="4"/>
+                        <rect x="40" y="40" width="20" height="30" fill="#0A0A0A"/>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Apex Fighters</h4>
+                <p class="font-bold text-white bg-neo-black border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">1000 COINS + BONUS</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl">$9.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <div class="absolute -top-4 -left-4 bg-neo-magenta text-white border-4 border-neo-black shadow-brutal-sm px-3 py-1 font-bold z-10 transform -rotate-6">
+                    -20% OFF
+                </div>
+                <div class="w-full h-48 bg-[#8338EC] border-4 border-neo-black mb-6 flex items-center justify-center overflow-hidden">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 0L65.4508 34.5491L100 50L65.4508 65.4508L50 100L34.5491 65.4508L0 50L34.5491 34.5491L50 0Z" fill="#FAFF00" stroke="#0A0A0A" stroke-width="4"/>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Fantasy Quest</h4>
+                <p class="font-bold text-neo-black bg-neo-yellow border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">10,000 GOLD</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl line-through text-gray-400 mr-2">$25</span>
+                    <span class="font-display text-2xl text-neo-magenta">$19.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-hover bg-neo-yellow border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <div class="w-full h-48 bg-[#38B000] border-4 border-neo-black mb-6 flex items-center justify-center overflow-hidden">
+                    <svg width="90" height="90" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="60" height="60" fill="#FF00E6" stroke="#0A0A0A" stroke-width="6"/>
+                        <rect x="40" y="40" width="20" height="20" fill="#0A0A0A"/>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Neon Racers</h4>
+                <p class="font-bold text-white bg-neo-magenta border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">PREMIUM PASS</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl">$14.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-white hover:text-neo-black">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <div class="w-full h-48 bg-[#FF9F1C] border-4 border-neo-black mb-6 flex items-center justify-center overflow-hidden">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="square">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Valor Strike</h4>
+                <p class="font-bold text-neo-black bg-white border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">2500 VP</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl">$24.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-6 flex flex-col relative">
+                <div class="w-full h-48 bg-[#2EC4B6] border-4 border-neo-black mb-6 flex items-center justify-center overflow-hidden">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="square">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                </div>
+                <h4 class="font-display text-2xl mb-2 uppercase">Battle Royale X</h4>
+                <p class="font-bold text-neo-black bg-neo-yellow border-2 border-neo-black inline-block px-2 py-1 mb-6 w-max">BATTLE PASS</p>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="font-display text-2xl">$9.99</span>
+                    <button class="brutal-btn bg-neo-blue text-white font-bold px-6 py-3 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">TOP UP</button>
+                </div>
+            </div>
+
+            <!-- Empty slots to show structure -->
+            <div class="border-4 border-dashed border-neo-black p-6 flex flex-col items-center justify-center text-center opacity-50 min-h-[400px]">
+                <span class="font-display text-4xl mb-2">+</span>
+                <p class="font-bold">MORE GAMES<br>COMING SOON</p>
+            </div>
+            
+            <div class="border-4 border-dashed border-neo-black p-6 flex flex-col items-center justify-center text-center opacity-50 min-h-[400px]">
+                <span class="font-display text-4xl mb-2">+</span>
+                <p class="font-bold">MORE GAMES<br>COMING SOON</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Info Section with stickers -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
+        <!-- Background decorative block -->
+        <div class="absolute inset-0 bg-neo-blue transform -skew-y-2 z-0 border-y-4 border-neo-black"></div>
+        
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white py-12">
+            <div class="bg-white text-neo-black border-4 border-neo-black p-8 shadow-brutal transform -rotate-1">
+                <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF00E6" stroke-width="3" stroke-linecap="square"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <h4 class="font-display text-2xl mb-2 uppercase">Verified Secure</h4>
+                <p class="font-bold text-gray-700">100% safe transactions protected by advanced encryption.</p>
+            </div>
+            
+            <div class="bg-neo-yellow text-neo-black border-4 border-neo-black p-8 shadow-brutal transform rotate-2">
+                <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0047FF" stroke-width="3" stroke-linecap="square"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <h4 class="font-display text-2xl mb-2 uppercase">Instant Delivery</h4>
+                <p class="font-bold text-gray-700">Don't wait. Get your top-ups delivered to your account instantly.</p>
+            </div>
+            
+            <div class="bg-neo-magenta text-white border-4 border-neo-black p-8 shadow-brutal transform -rotate-2">
+                <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FAFF00" stroke-width="3" stroke-linecap="square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <h4 class="font-display text-2xl mb-2 uppercase">24/7 Support</h4>
+                <p class="font-bold text-white/90">Gamers don't sleep, and neither do we. Always here to help.</p>
+            </div>
+        </div>
+
+        <!-- Scattered stars -->
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="#FAFF00" stroke="#0A0A0A" stroke-width="2" class="absolute top-10 left-10 z-20 transform rotate-45">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2" class="absolute bottom-10 right-20 z-20 transform -rotate-12">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t-8 border-neo-black bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="font-display text-4xl mb-4 transform -rotate-1 w-max bg-neo-yellow border-4 border-neo-black px-4 py-2 shadow-brutal-sm">GAMER FUEL</h2>
+                    <p class="font-bold text-lg max-w-sm mb-6">The rawest, fastest, and most secure way to power up your gameplay. Level up today.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Links in distinct boxes -->
+                <div class="flex flex-col gap-4">
+                    <h5 class="font-display text-xl mb-2 uppercase">Support</h5>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">FAQ</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Contact Us</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Refund Policy</a>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h5 class="font-display text-xl mb-2 uppercase">Legal</h5>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Terms of Service</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Privacy Policy</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Cookie Rules</a>
+                </div>
+            </div>
+            
+            <div class="mt-16 pt-8 border-t-4 border-neo-black text-center font-bold">
+                <p>&copy; 2026 GAMER FUEL TOP-UP. ALL RIGHTS RESERVED. NOT A REAL STORE.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
