@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW E-Museum | The Ultimate Driving Machine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        bmwBlack: '#050505',
+                        bmwGray: '#1a1a1a',
+                        bmwSilver: '#8c8c8c',
+                        bmwBlue: '#0066B1',
+                        mLightBlue: '#0085CA',
+                        mDarkBlue: '#0033A0',
+                        mRed: '#E32636'
+                    },
+                    letterSpacing: {
+                        widest: '.25em',
+                        mega: '.5em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0066B1; }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Interactive Spotlight */
+        #hero-header {
+            --x: 50%;
+            --y: 50%;
+        }
+        #hero-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px circle at var(--x) var(--y), rgba(0, 102, 177, 0.15), rgba(255,255,255,0.02) 20%, transparent 60%);
+            pointer-events: none;
+            z-index: 15;
+            transition: background 0.1s ease;
+        }
+
+        /* Cinematic Text Reveal Animation */
+        .reveal-text-container { overflow: hidden; }
+        .reveal-text {
+            transform: translateY(100%);
+            animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Hover Image Zoom */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom {
+            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .img-zoom { transform: scale(1.08); }
+
+        /* Custom Interactive Card for Evolusi Mobil */
+        .evolution-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .evolution-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            transition: all 0.5s ease;
+        }
+        .evolution-card:hover::after {
+            background: linear-gradient(to top, rgba(0,6,20,0.95) 0%, rgba(0,0,0,0.6) 70%, transparent 100%);
+        }
+        .evolution-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 10;
+            transform: translateY(3.5rem); /* Pushes description down */
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .evolution-card:hover .evolution-content {
+            transform: translateY(0); /* Slides up on hover */
+        }
+        .evolution-desc {
+            opacity: 0;
+            margin-top: 1rem;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(10px);
+        }
+        .evolution-card:hover .evolution-desc {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        /* M-Power Button Hover */
+        .btn-m-power {
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.4s ease;
+        }
+        .btn-m-power::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(to right, #0085CA 33%, #0033A0 33%, #0033A0 66%, #E32636 66%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .btn-m-power:hover::before { transform: scaleX(1); }
+        .btn-m-power:hover {
+            border-color: rgba(255,255,255,1);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Glass Nav */
+        .nav-scrolled {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Fade in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .bg-tech-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            pointer-events: none;
+            animation: drift 15s infinite linear;
+        }
+        
+        @keyframes drift {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-25px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-2deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            animation: pulse-orb 6s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse-orb {
+            0% { transform: scale(1); opacity: 0.05; }
+            100% { transform: scale(1.3); opacity: 0.15; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-bmwBlue selection:text-white">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 md:px-12 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-4 cursor-pointer group" onclick="window.scrollTo(0,0)">
+            <svg viewBox="0 0 100 100" class="h-10 w-10 md:h-12 md:w-12 transform group-hover:rotate-90 transition-transform duration-1000 ease-in-out">
+                <circle cx="50" cy="50" r="48" fill="#121212" stroke="#fff" stroke-width="1.5"/>
+                <circle cx="50" cy="50" r="38" fill="transparent" stroke="#fff" stroke-width="1"/>
+                <path d="M50 12 A38 38 0 0 1 88 50 L50 50 Z" fill="#0066B1"/>
+                <path d="M88 50 A38 38 0 0 1 50 88 L50 50 Z" fill="#fff"/>
+                <path d="M50 88 A38 38 0 0 1 12 50 L50 50 Z" fill="#0066B1"/>
+                <path d="M12 50 A38 38 0 0 1 50 12 L50 50 Z" fill="#fff"/>
+            </svg>
+            <div class="hidden sm:block">
+                <h1 class="text-sm font-bold tracking-mega uppercase leading-tight">BMW</h1>
+                <p class="text-[10px] text-bmwBlue tracking-widest uppercase font-bold">E-Museum</p>
+            </div>
+        </div>
+
+        <!-- Navigation Links (Persiapan 3 Slide) -->
+        <div class="hidden md:flex gap-8 lg:gap-12 items-center">
+            <a href="#" class="text-xs font-bold tracking-widest uppercase text-white relative group">
+                Home
+                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed transition-all duration-300"></span>
+            </a>
+            <a href="#koleksi" class="text-xs font-semibold tracking-widest uppercase text-bmwSilver hover:text-white transition-colors relative group">
+                Koleksi Produk
+                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#tiket" class="text-xs font-semibold tracking-widest uppercase text-bmwSilver hover:text-white transition-colors relative group">
+                Tiket & Kunjungan
+                <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            
+            <!-- Garis Pemisah & Menu Login -->
+            <div class="w-[1px] h-4 bg-gray-700 mx-2"></div>
+            <a href="#login" class="text-xs font-bold tracking-widest uppercase text-white hover:text-mLightBlue transition-colors flex items-center gap-2 group">
+                <i class="fa-regular fa-user group-hover:text-mRed transition-colors"></i> Login
+            </a>
+        </div>
+
+        <button class="md:hidden text-white hover:text-bmwBlue transition-colors">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </nav>
+
+    <header id="hero-header" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <!-- Parallax Background -->
+        <div id="hero-bg" class="absolute inset-0 w-full h-[120%] -top-[10%] bg-[url('https://images.unsplash.com/photo-1555353540-64fd1b620921?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center"></div>
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-bmwBlack/60 via-bmwBlack/40 to-bmwBlack"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-4 mt-20 flex flex-col items-center w-full max-w-7xl">
+            <div class="reveal-text-container mb-6">
+                <p class="reveal-text font-semibold tracking-widest text-sm md:text-base uppercase flex items-center gap-4">
+                    <span class="w-12 h-[3px] bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed block transform skew-x-[-30deg]"></span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">The Ultimate Driving Machine</span>
+                    <span class="w-12 h-[3px] bg-gradient-to-l from-mLightBlue via-mDarkBlue to-mRed block transform skew-x-[30deg]"></span>
+                </p>
+            </div>
+            
+            <div class="reveal-text-container relative">
+                <h1 class="reveal-text delay-100 text-5xl md:text-7xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.9] text-white drop-shadow-2xl relative z-10">
+                    Freude am <br /> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-600">Fahren.</span>
+                </h1>
+            </div>
+
+            <div class="reveal-text-container mt-12 relative z-20">
+                <a href="#sejarah" class="reveal-text delay-300 btn-m-power inline-flex items-center gap-4 px-8 py-4 text-sm font-bold tracking-widest uppercase cursor-pointer">
+                    Mulai Penjelajahan <i class="fas fa-arrow-down animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- M-Power Bottom Glow Accent -->
+        <div class="absolute bottom-0 left-0 w-full z-20">
+            <!-- Pendaran cahaya (blur) -->
+            <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed blur-2xl opacity-40 mix-blend-screen"></div>
+            <!-- Garis tajam -->
+            <div class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-mLightBlue via-mDarkBlue to-mRed"></div>
+        </div>
+    </header>
+
+    <section id="sejarah" class="py-32 px-6 md:px-12 max-w-7xl mx-auto relative">
+        
+        <!-- Background Ambient & Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <!-- Tech Grid / Blueprint -->
+            <div class="absolute inset-0 bg-tech-grid opacity-40"></div>
+            
+            <!-- Glowing Orbs (Lampu Sorot Ambient) -->
+            <div class="glow-orb w-[30rem] h-[30rem] bg-bmwBlue top-[-10%] left-[-20%]"></div>
+            <div class="glow-orb w-[20rem] h-[20rem] bg-mRed bottom-0 right-[-10%]" style="animation-delay: 2s;"></div>
+            
+            <!-- Floating Abstract BMW Elements -->
+            <!-- 1. Hexagon DRL Shape -->
+            <svg class="floating-shape top-[15%] left-[5%] w-32 h-32 text-white opacity-[0.03]" style="animation-duration: 18s;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
+            </svg>
+            <!-- 2. ///M Logo Samar -->
+            <div class="floating-shape top-[60%] right-[5%] text-[12rem] font-black italic text-white opacity-[0.02] tracking-tighter" style="animation-duration: 22s; animation-direction: reverse;">///M</div>
+            <!-- 3. 'i' series Logo -->
+            <div class="floating-shape bottom-[5%] left-[45%] text-[8rem] font-light text-mLightBlue opacity-[0.03]" style="animation-duration: 25s;">i</div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="fade-in-section order-2 lg:order-1 relative">
+                <!-- Abstract Image or historical graphic -->
+                <div class="relative h-[400px] md:h-[500px] w-full img-zoom-container border border-gray-800 rounded-sm">
+                    <img src="https://www.liputan6.com/otomotif/read/3004410/mitos-logo-bmw" alt="BMW Engine History" class="w-full h-full object-cover img-zoom grayscale hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-bmwBlue/10 mix-blend-overlay"></div>
+                </div>
+                <!-- Floating Element -->
+                <div class="absolute -bottom-10 -right-10 bg-bmwGray p-8 border border-gray-800 hidden md:block z-10 shadow-2xl">
+                    <p class="text-4xl font-black text-bmwBlue mb-2">1916</p>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 font-semibold">Tahun Berdiri</p>
+                </div>
+            </div>
+
+            <div class="fade-in-section order-1 lg:order-2">
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6">Awal dari Sebuah <br><span class="text-bmwBlue">Legenda</span></h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-6">
+                    Sejarah Bayerische Motoren Werke (BMW) tidak dimulai di atas aspal jalan raya, melainkan di udara. Berawal dari memproduksi mesin pesawat terbang yang presisi, kami menerapkan standar kualitas yang sama ke dalam pembuatan sepeda motor pertama kami (R32) dan akhirnya mahakarya roda empat.
+                </p>
+                <p class="text-gray-400 font-light leading-relaxed mb-10">
+                    Setiap detak mesin adalah saksi bisu dedikasi tanpa kompromi terhadap performa dan desain.
+                </p>
+                <button class="btn-m-power px-8 py-4 text-xs font-bold tracking-widest uppercase">
+                    Kenali Lebih Dalam Sejarah BMW
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evolusi Mahakarya Section -->
+    <section id="evolusi" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-900 fade-in-section relative">
+        
+        <!-- Background Ambient Variasi 1 -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <div class="absolute inset-0 bg-tech-grid opacity-[0.15]"></div>
+            <div class="glow-orb w-[40rem] h-[40rem] bg-mDarkBlue top-[10%] right-[10%] opacity-20" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="mb-16 relative z-10">
+            <h2 class="text-xs uppercase tracking-widest text-bmwBlue font-bold mb-4">Timeline</h2>
+            <h3 class="text-3xl md:text-5xl font-light uppercase tracking-tighter">Evolusi <span class="font-black">Mahakarya</span></h3>
+        </div>
+
+        <!-- Diubah agar selalu sejajar ke samping (bisa di-scroll ke samping di HP, sejajar 3 di Laptop) -->
+        <div class="flex flex-nowrap overflow-x-auto md:grid md:grid-cols-3 gap-6 relative z-10 pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            
+            <!-- Card 1: Mobil Pertama -->
+            <div class="evolution-card group h-[400px] w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center rounded-sm">
+                <img src="https://images.unsplash.com/photo-1610884447640-42b8ec61a933?q=80&w=2826&auto=format&fit=crop" alt="BMW Classic" class="w-full h-full object-cover img-zoom">
+                <div class="evolution-content">
+                    <p class="text-xs font-bold text-mLightBlue mb-2 uppercase tracking-widest">1928</p>
+                    <h4 class="text-2xl font-bold uppercase transition-transform duration-500">BMW 3/15 PS</h4>
+                    <p class="evolution-desc text-sm text-gray-300 font-light">
+                        Langkah pertama BMW di dunia otomotif roda empat. Menjadi pionir mobilitas yang dapat diandalkan pada masanya.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2: Terkeren / Ikonik -->
+            <div class="evolution-card group h-[400px] w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center rounded-sm">
+                <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?q=80&w=2864&auto=format&fit=crop" alt="BMW M3 E30" class="w-full h-full object-cover img-zoom">
+                <div class="evolution-content">
+                    <p class="text-xs font-bold text-mRed mb-2 uppercase tracking-widest">1986</p>
+                    <h4 class="text-2xl font-bold uppercase transition-transform duration-500">BMW M3 E30</h4>
+                    <p class="evolution-desc text-sm text-gray-300 font-light">
+                        Lahir di lintasan balap, merajai jalanan. Legenda hidup yang mendefinisikan arti sebenarnya dari "Sports Sedan".
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: Terbaru / Masa Depan -->
+            <div class="evolution-card group h-[400px] w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center rounded-sm">
+                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e73a?q=80&w=2940&auto=format&fit=crop" alt="BMW i Series" class="w-full h-full object-cover img-zoom">
+                <div class="evolution-content">
+                    <p class="text-xs font-bold text-mDarkBlue mb-2 uppercase tracking-widest">Masa Depan</p>
+                    <h4 class="text-2xl font-bold uppercase transition-transform duration-500">BMW i Vision</h4>
+                    <p class="evolution-desc text-sm text-gray-300 font-light">
+                        Perpaduan elektrifikasi murni, kecerdasan buatan, dan desain sirkular untuk kenikmatan berkendara masa depan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekilas Dari Koleksi Kami -->
+    <section id="koleksi-preview" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-900 fade-in-section relative">
+        
+        <!-- Background Ambient Variasi 2 -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <div class="absolute inset-0 bg-tech-grid opacity-20"></div>
+            <!-- Lampu Glow -->
+            <div class="glow-orb w-[25rem] h-[25rem] bg-mRed bottom-[0%] left-[0%] opacity-10" style="animation-delay: 3s;"></div>
+            <div class="glow-orb w-[30rem] h-[30rem] bg-bmwBlue top-[-10%] right-[-10%] opacity-15" style="animation-delay: 0.5s;"></div>
+            <!-- Elemen Terbang Variasi (X series logo) -->
+            <div class="floating-shape top-[40%] left-[50%] text-[8rem] font-black italic text-white opacity-[0.02]" style="animation-duration: 20s; animation-direction: reverse;">X</div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
+            <div>
+                <h2 class="text-xs uppercase tracking-widest text-bmwBlue font-bold mb-4">Galeri</h2>
+                <h3 class="text-3xl md:text-5xl font-light uppercase tracking-tighter">Sekilas dari <span class="font-black">Koleksi Kami</span></h3>
+            </div>
+            <a href="#koleksi" class="btn-m-power px-6 py-3 text-xs font-bold tracking-widest uppercase inline-block">
+                Lihat Lebih Banyak Produk <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[500px] relative z-10">
+            <div class="col-span-2 row-span-2 relative group overflow-hidden border border-gray-800">
+                <img src="https://images.unsplash.com/photo-1554744512-d6c603f27c54?q=80&w=2940&auto=format&fit=crop" alt="BMW Motorrad" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0">
+                <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <p class="text-white font-bold uppercase tracking-widest bg-bmwBlack/80 px-4 py-2 border-l-4 border-bmwBlue">Motorrad Division</p>
+                </div>
+            </div>
+            <div class="col-span-2 md:col-span-1 relative group overflow-hidden border border-gray-800">
+                <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=2831&auto=format&fit=crop" alt="BMW Interior" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0">
+            </div>
+            <div class="col-span-2 md:col-span-1 relative group overflow-hidden border border-gray-800">
+                <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=2825&auto=format&fit=crop" alt="BMW M Engine" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0">
+            </div>
+            <div class="col-span-2 md:col-span-2 relative group overflow-hidden border border-gray-800">
+                <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?q=80&w=2727&auto=format&fit=crop" alt="BMW Concept" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links / Next Steps Section (Inspired by Reference) -->
+    <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-900 fade-in-section relative">
+        
+        <!-- Background Ambient Variasi 3 -->
+        <div class="absolute inset-0 pointer-events-none z-0 flex justify-center items-center">
+            <div class="absolute inset-0 bg-tech-grid opacity-10"></div>
+            <!-- Glow Lebar di Tengah -->
+            <div class="glow-orb w-[50rem] h-[20rem] bg-mLightBlue opacity-[0.08] rounded-[100%] blur-[100px]" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="text-center mb-16 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-light mb-3">Siap melanjutkan perjalanan Anda?</h2>
+            <p class="text-gray-400 font-light">Eksplorasi lebih lanjut layanan eksklusif E-Museum BMW.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center relative z-10">
+            <!-- Item 1 -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <div class="h-16 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-ticket text-4xl text-gray-300 group-hover:text-bmwBlue transition-colors duration-300 transform group-hover:scale-110"></i>
+                </div>
+                <h3 class="text-lg font-light text-white mb-4">Rencanakan kunjungan.</h3>
+                <a href="#tiket" class="text-sm font-semibold text-white group-hover:text-bmwBlue transition-colors duration-300 flex items-center gap-2 mt-auto">
+                    Pesan tiket <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <div class="h-16 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-vr-cardboard text-4xl text-gray-300 group-hover:text-bmwBlue transition-colors duration-300 transform group-hover:scale-110"></i>
+                </div>
+                <h3 class="text-lg font-light text-white mb-4">Tur Virtual 360°.</h3>
+                <a href="#" class="text-sm font-semibold text-white group-hover:text-bmwBlue transition-colors duration-300 flex items-center gap-2 mt-auto">
+                    Mulai tur <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <div class="h-16 flex items-center justify-center mb-4">
+                    <i class="fa-regular fa-comment-dots text-4xl text-gray-300 group-hover:text-bmwBlue transition-colors duration-300 transform group-hover:scale-110"></i>
+                </div>
+                <h3 class="text-lg font-light text-white mb-4">Eksplorasi acara khusus.</h3>
+                <a href="#" class="text-sm font-semibold text-white group-hover:text-bmwBlue transition-colors duration-300 flex items-center gap-2 mt-auto">
+                    Pelajari lebih lanjut <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <div class="h-16 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-bag-shopping text-4xl text-gray-300 group-hover:text-bmwBlue transition-colors duration-300 transform group-hover:scale-110"></i>
+                </div>
+                <h3 class="text-lg font-light text-white mb-4">Merchandise resmi.</h3>
+                <a href="#" class="text-sm font-semibold text-white group-hover:text-bmwBlue transition-colors duration-300 flex items-center gap-2 mt-auto">
+                    Lihat katalog <i class="fas fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#020202] py-16 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            
+            <div class="flex items-center gap-4">
+                <svg viewBox="0 0 100 100" class="h-8 w-8">
+                    <circle cx="50" cy="50" r="48" fill="#121212" stroke="#fff" stroke-width="1.5"/>
+                    <circle cx="50" cy="50" r="38" fill="transparent" stroke="#fff" stroke-width="1"/>
+                    <path d="M50 12 A38 38 0 0 1 88 50 L50 50 Z" fill="#0066B1"/>
+                    <path d="M88 50 A38 38 0 0 1 50 88 L50 50 Z" fill="#fff"/>
+                    <path d="M50 88 A38 38 0 0 1 12 50 L50 50 Z" fill="#0066B1"/>
+                    <path d="M12 50 A38 38 0 0 1 50 12 L50 50 Z" fill="#fff"/>
+                </svg>
+                <div>
+                    <h4 class="font-bold tracking-mega uppercase text-xs text-white">BMW E-Museum</h4>
+                    <p class="text-[10px] text-gray-500 uppercase">Mockup Project</p>
+                </div>
+            </div>
+
+            <div class="text-xs text-gray-600 font-light uppercase tracking-wider text-center md:text-right">
+                <p>&copy; 2026 Virtual Experience.</p>
+                <p class="mt-1">Designed for Web Design Task.</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Interactive Spotlight Effect on Hero
+            const heroHeader = document.getElementById('hero-header');
+            heroHeader.addEventListener('mousemove', (e) => {
+                const rect = heroHeader.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                heroHeader.style.setProperty('--x', `${x}%`);
+                heroHeader.style.setProperty('--y', `${y}%`);
+            });
+
+            // Navbar Glassmorphism on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled');
+                    navbar.classList.remove('py-6');
+                    navbar.classList.add('py-4');
+                } else {
+                    navbar.classList.remove('nav-scrolled');
+                    navbar.classList.add('py-6');
+                    navbar.classList.remove('py-4');
+                }
+            });
+
+            // Scroll Reveal Observer
+            const fadeElements = document.querySelectorAll('.fade-in-section');
+            const appearOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            fadeElements.forEach(el => {
+                appearOnScroll.observe(el);
+            });
+
+            // Subtle Parallax for Hero
+            const heroBg = document.getElementById('hero-bg');
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY;
+                if (scrollPos < window.innerHeight) {
+                    heroBg.style.transform = `translateY(${scrollPos * 0.4}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

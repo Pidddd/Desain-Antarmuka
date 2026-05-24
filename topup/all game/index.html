@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMER FUEL TOP-UP - All Games</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { neo: { yellow: '#FAFF00', magenta: '#FF00E6', blue: '#0047FF', bg: '#F8F8F0', black: '#0A0A0A' } },
+                    fontFamily: { display: ['"Archivo Black"', 'sans-serif'], body: ['"Space Grotesk"', 'sans-serif'], },
+                    boxShadow: { 'brutal': '8px 8px 0px 0px #0A0A0A', 'brutal-lg': '12px 12px 0px 0px #0A0A0A', 'brutal-sm': '4px 4px 0px 0px #0A0A0A', 'brutal-white': '6px 6px 0px 0px #FFFFFF', }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F8F0;
+            background-image: 
+                linear-gradient(rgba(10, 10, 10, 0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.05) 2px, transparent 2px),
+                linear-gradient(rgba(10, 10, 10, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            overflow-x: hidden;
+        }
+        .text-offset-black { text-shadow: 5px 5px 0px #0A0A0A; }
+        .brutal-btn { transition: all 0.1s ease; }
+        .brutal-btn:active { transform: translate(4px, 4px); box-shadow: 4px 4px 0px 0px #0A0A0A !important; }
+        .card-hover { transition: all 0.2s ease; }
+        .card-hover:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px 0px #0A0A0A; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-body text-neo-black antialiased selection:bg-neo-magenta selection:text-white">
+
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col xl:flex-row justify-between items-center gap-6 relative z-40">
+        <a href="index.html" class="group brutal-btn bg-neo-magenta text-white border-4 border-neo-black shadow-brutal px-6 py-3 block transform rotate-[-2deg] shrink-0">
+            <h1 class="font-display text-3xl md:text-4xl tracking-tighter text-offset-black">MISHA SHOP</h1>
+        </a>
+        <div class="w-full xl:max-w-md flex relative">
+            <input type="text" placeholder="Search games..." class="w-full border-4 border-neo-black border-r-0 px-4 py-2 font-bold focus:outline-none focus:bg-neo-yellow transition-colors placeholder-gray-500">
+            <button class="bg-white border-4 border-neo-black px-4 py-2 hover:bg-neo-yellow brutal-btn flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 font-bold text-base md:text-lg">
+            <a href="index.html" class="brutal-btn bg-white border-4 border-neo-black shadow-brutal px-4 py-2 hover:bg-neo-yellow">HOME</a>
+            <a href="all-games.html" class="brutal-btn bg-white border-4 border-neo-black shadow-brutal px-4 py-2 hover:bg-neo-yellow whitespace-nowrap">ALL GAMES</a>
+            <a href="#" class="brutal-btn bg-white border-4 border-neo-black shadow-brutal px-4 py-2 hover:bg-neo-yellow whitespace-nowrap">CONTACT US</a>
+            <a href="#" class="brutal-btn bg-neo-blue text-white border-4 border-neo-black shadow-brutal px-4 py-2 flex items-center gap-2 whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> ACCOUNT
+            </a>
+        </div>
+    </nav>
+
+    <div class="pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="bg-neo-yellow border-8 border-neo-black shadow-brutal-lg p-8 md:p-12 text-center transform -rotate-1 mb-12 relative z-10">
+                <div class="absolute -top-4 -right-4 w-8 h-8 bg-neo-magenta border-4 border-neo-black hidden md:block"></div>
+                <div class="absolute -bottom-4 -left-4 w-8 h-8 bg-neo-blue border-4 border-neo-black hidden md:block"></div>
+                <h2 class="font-display text-5xl md:text-7xl tracking-tight text-white text-offset-black leading-none uppercase">All Games</h2>
+                <p class="font-bold text-xl mt-4 bg-white border-4 border-neo-black inline-block px-4 py-2">FIND YOUR BATTLEFIELD</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-16 sticky top-4 z-50">
+                <a href="#cat-fps" class="brutal-btn bg-neo-blue text-white font-bold px-6 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta">🎯 FPS</a>
+                <a href="#cat-racing" class="brutal-btn bg-neo-magenta text-white font-bold px-6 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-yellow hover:text-neo-black">🏎️ RACING</a>
+                <a href="#cat-moba" class="brutal-btn bg-[#FF9F1C] text-neo-black font-bold px-6 py-2 border-4 border-neo-black shadow-brutal hover:bg-white">⚔️ MOBA</a>
+                <a href="#cat-rpg" class="brutal-btn bg-[#8338EC] text-white font-bold px-6 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-yellow hover:text-neo-black">🔮 RPG</a>
+            </div>
+
+            <div id="cat-fps" class="mb-20 pt-24 -mt-20 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <h3 class="font-display text-3xl bg-white border-4 border-neo-black px-6 py-2 shadow-brutal transform rotate-1 whitespace-nowrap">🎯 FPS & SHOOTERS</h3>
+                    <div class="h-2 w-full bg-neo-black flex-1"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#FF4655] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-5xl text-white">V</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Valorant</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#E5A912] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-neo-black">CS2</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Counter-Strike 2</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#D90429] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><svg width="50" height="50" viewBox="0 0 100 100" fill="none"><path d="M10 90L50 10L90 90H10Z" fill="#FAFF00" stroke="#0A0A0A" stroke-width="4"/><rect x="40" y="40" width="20" height="30" fill="#0A0A0A"/></svg></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Apex Legends</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#F1A208] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-3xl text-neo-black">PUBG</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">PUBG Mobile</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#333333] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-2xl text-white">CODM</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Call of Duty M</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#FF8C00] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white italic">FF</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Free Fire</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                </div>
+                <div class="mt-8 flex justify-center lg:justify-end">
+                    <a href="#" class="brutal-btn inline-flex items-center gap-2 bg-neo-black text-white border-4 border-neo-black shadow-brutal px-6 py-3 font-display text-lg hover:bg-neo-magenta hover:text-white transition-colors transform -rotate-1">VIEW ALL FPS GAMES <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+            </div>
+
+            <div id="cat-racing" class="mb-20 pt-24 -mt-20 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <h3 class="font-display text-3xl bg-neo-magenta text-white border-4 border-neo-black px-6 py-2 shadow-brutal transform -rotate-1 whitespace-nowrap">🏎️ RACING & SPORTS</h3>
+                    <div class="h-2 w-full bg-neo-black flex-1"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#FF00E6] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white">FH5</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Forza Horizon 5</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#38B000] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white italic">NFS</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Need For Speed</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#2B2D42] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-3xl text-neo-yellow">FC24</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">EA Sports FC</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#0047FF] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-3xl text-white">RL</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Rocket League</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                </div>
+                <div class="mt-8 flex justify-center lg:justify-end">
+                    <a href="#" class="brutal-btn inline-flex items-center gap-2 bg-neo-black text-white border-4 border-neo-black shadow-brutal px-6 py-3 font-display text-lg hover:bg-neo-magenta hover:text-white transition-colors transform rotate-1">VIEW ALL RACING GAMES <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+            </div>
+
+            <div id="cat-moba" class="mb-20 pt-24 -mt-20 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <h3 class="font-display text-3xl bg-neo-blue text-white border-4 border-neo-black px-6 py-2 shadow-brutal transform rotate-2 whitespace-nowrap">⚔️ MOBA</h3>
+                    <div class="h-2 w-full bg-neo-black flex-1"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#4CC9F0] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-3xl text-neo-black">MLBB</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Mobile Legends</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#D90429] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white">D2</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Dota 2</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#F7B801] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-neo-black">LoL</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">League of Legends</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#4361EE] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white">WR</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Wild Rift</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                </div>
+                <div class="mt-8 flex justify-center lg:justify-end">
+                    <a href="#" class="brutal-btn inline-flex items-center gap-2 bg-neo-black text-white border-4 border-neo-black shadow-brutal px-6 py-3 font-display text-lg hover:bg-neo-magenta hover:text-white transition-colors transform -rotate-1">VIEW ALL MOBA GAMES <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+            </div>
+
+            <div id="cat-rpg" class="mb-20 pt-24 -mt-20 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <h3 class="font-display text-3xl bg-neo-yellow text-neo-black border-4 border-neo-black px-6 py-2 shadow-brutal transform -rotate-1 whitespace-nowrap">🔮 RPG & GACHA</h3>
+                    <div class="h-2 w-full bg-neo-black flex-1"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#4361EE] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Genshin Impact</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#7209B7] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white">HSR</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Honkai Star Rail</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#0047FF] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-4xl text-white">FGO</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Fate/Grand Order</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                    <div class="card-hover bg-white border-4 border-neo-black shadow-brutal p-4 flex flex-col items-center text-center"><div class="w-full aspect-square bg-[#0A0A0A] border-4 border-neo-black mb-4 flex items-center justify-center overflow-hidden"><span class="font-display text-3xl text-neo-yellow">WW</span></div><h4 class="font-display text-lg mb-4 uppercase leading-tight">Wuthering Waves</h4><button class="brutal-btn w-full mt-auto bg-neo-yellow text-neo-black font-bold px-2 py-2 border-4 border-neo-black shadow-brutal hover:bg-neo-magenta hover:text-white">TOP UP</button></div>
+                </div>
+                <div class="mt-8 flex justify-center lg:justify-end">
+                    <a href="#" class="brutal-btn inline-flex items-center gap-2 bg-neo-black text-white border-4 border-neo-black shadow-brutal px-6 py-3 font-display text-lg hover:bg-neo-magenta hover:text-white transition-colors transform rotate-1">VIEW ALL RPG GAMES <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-20 border-t-8 border-neo-black bg-white relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="font-display text-4xl mb-4 transform -rotate-1 w-max bg-neo-yellow border-4 border-neo-black px-4 py-2 shadow-brutal-sm">MISHA SHOP</h2>
+                    <p class="font-bold text-lg max-w-sm mb-6">The rawest, fastest, and most secure way to power up your gameplay. Level up today.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                        <a href="#" class="w-12 h-12 bg-neo-blue border-4 border-neo-black flex items-center justify-center hover:bg-neo-magenta brutal-btn shadow-brutal-sm"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h5 class="font-display text-xl mb-2 uppercase">Support</h5>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">FAQ</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Contact Us</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Refund Policy</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h5 class="font-display text-xl mb-2 uppercase">Legal</h5>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Terms of Service</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Privacy Policy</a>
+                    <a href="#" class="border-4 border-neo-black bg-white px-4 py-2 font-bold hover:bg-neo-yellow hover:translate-x-2 transition-transform w-full md:w-max">Cookie Rules</a>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t-4 border-neo-black text-center font-bold">
+                <p>&copy; 2026 MISHA SHOP TOP-UP. ALL RIGHTS RESERVED. NOT A REAL STORE.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if(btn.textContent.trim().toUpperCase() === 'TOP UP') {
+                    btn.onclick = () => window.location.href = 'payment.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
